@@ -25,7 +25,6 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Color(0xD0D43C0E),
-        toolbarHeight: 73.5,
         actions: [
           Icon(
             Icons.ac_unit,
