@@ -9,6 +9,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String name = 'Samuel';
+  bool checkStatus = true;
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -36,22 +38,54 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
+            //Image.
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('The boy is going'),
+                Text('The girl is coming'),
+              ],
+            ),
             Text(
               'You have pushed the button this many times:',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  backgroundColor: Colors.purple[400],
+                  fontWeight: FontWeight.w800,
+                  decoration: TextDecoration.overline,
+                  decorationStyle: TextDecorationStyle.dashed),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Text(name),
+            MaterialButton(
+              onPressed: () {
+                setState(() {
+                  name = 'Adekunle Samuel.';
+                });
+              },
+              child: Text('First Button'),
+              color: Colors.green,
+            ),
+            Text(checkStatus ? 'Status: true' : 'Status: false'),
+            checkStatus ? Text('Status: true') : Text('Status: false'),
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void newFuc() {
+    if (checkStatus) {}
   }
 }
