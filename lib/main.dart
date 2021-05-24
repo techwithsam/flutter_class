@@ -1,4 +1,3 @@
-import 'package:first_example/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,25 +5,103 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter First Example',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.green,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.green, elevation: 23),
+        textTheme: TextTheme(
+          bodyText2: TextStyle(color: Colors.orange),
+        ),
       ),
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: MyFirstPage(),
+    );
+  }
+}
+
+class MyFirstPage extends StatelessWidget {
+  const MyFirstPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Page'),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: FlutterLogo(),
+              accountName: Text('Samuel adekunle'),
+              accountEmail: Text('samuelbeebest@gmail.com'),
+              onDetailsPressed: () {},
+              otherAccountsPicturesSize: Size.square(22.7),
+              otherAccountsPictures: [FlutterLogo(), FlutterLogo()],
+            ),
+            _buildDrawerList(
+                title: 'Dashboard',
+                icon: Icons.account_balance,
+                onTap: () => print('Dashboard pressed!')),
+            _buildDrawerList(
+                title: 'Profile',
+                icon: Icons.person,
+                onTap: () => print('Profile pressed!')),
+            _buildDrawerList(
+                title: 'Activities',
+                icon: Icons.manage_accounts,
+                onTap: () => print('Activities pressed!')),
+            _buildDrawerList(
+                title: 'My Stats',
+                icon: Icons.pie_chart,
+                onTap: () => print('My Stats pressed!')),
+            _buildDrawerList(
+                title: 'Settings',
+                icon: Icons.settings,
+                onTap: () => print('Settings pressed!')),
+            _buildDrawerList(
+                title: 'Sign Out',
+                icon: Icons.logout,
+                onTap: () => print('Sign Out pressed!')),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print('Floating Action Button Pressed !!!!'),
+        child: Icon(Icons.camera_alt_outlined),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Hello World'),
+            Text(
+              'Samuel is going to the market!!!!',
+              style: TextStyle(color: Colors.blue),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildDrawerList(
+      {required IconData icon,
+      required String title,
+      required Function() onTap}) {
+    return ListTile(
+      dense: true,
+      onTap: onTap,
+      leading: Icon(icon),
+      title: Text(title),
+      trailing: Icon(Icons.arrow_forward_ios_outlined, size: 12),
     );
   }
 }
