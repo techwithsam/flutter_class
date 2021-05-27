@@ -23,8 +23,33 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyFirstPage extends StatelessWidget {
+class MyFirstPage extends StatefulWidget {
   const MyFirstPage({Key? key}) : super(key: key);
+
+  @override
+  _MyFirstPageState createState() => _MyFirstPageState();
+}
+
+class _MyFirstPageState extends State<MyFirstPage> {
+  int _currentIndex = 0;
+
+  List<Widget> _widgetList = [
+    Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Hello World'),
+          Text(
+            'Samuel is going to the market!!!!',
+            style: TextStyle(color: Colors.blue),
+          ),
+        ],
+      ),
+    ),
+    Container(child: Text('Page Two')),
+    Container(child: Text('Page Three')),
+    Container(child: Text('Page Four')),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -77,19 +102,31 @@ class MyFirstPage extends StatelessWidget {
         child: Icon(Icons.camera_alt_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Hello World'),
-            Text(
-              'Samuel is going to the market!!!!',
-              style: TextStyle(color: Colors.blue),
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedIconTheme: IconThemeData(color: Colors.grey[400]),
+        selectedIconTheme: IconThemeData(color: Colors.black),
+        unselectedLabelStyle: TextStyle(color: Colors.grey[400]),
+        selectedLabelStyle: TextStyle(color: Colors.black),
+        fixedColor: Colors.green,
+        type: BottomNavigationBarType.shifting,
+        onTap: onTapped,
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.save_alt), label: 'Saved'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.download), label: 'Downloads'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
       ),
+      body: _widgetList[_currentIndex],
     );
+  }
+
+  void onTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 
   _buildDrawerList(
