@@ -1,3 +1,8 @@
+import 'package:first_example/screen/downloads.dart';
+import 'package:first_example/screen/home.dart';
+import 'package:first_example/screen/profile.dart';
+import 'package:first_example/screen/saved.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +19,17 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.green, elevation: 23),
-        textTheme: TextTheme(
-          bodyText2: TextStyle(color: Colors.orange),
+        appBarTheme: AppBarTheme(
+            textTheme: GoogleFonts.dancingScriptTextTheme(
+          TextTheme(
+            headline6:
+                GoogleFonts.dancingScript(fontSize: 25, color: Colors.white),
+          ),
+        )),
+        textTheme: GoogleFonts.lobsterTextTheme(
+          TextTheme(
+            bodyText2: GoogleFonts.dancingScript(color: Colors.orange),
+          ),
         ),
       ),
       home: MyFirstPage(),
@@ -34,28 +48,32 @@ class _MyFirstPageState extends State<MyFirstPage> {
   int _currentIndex = 0;
 
   List<Widget> _widgetList = [
-    Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Hello World'),
-          Text(
-            'Samuel is going to the market!!!!',
-            style: TextStyle(color: Colors.blue),
-          ),
-        ],
-      ),
-    ),
-    Container(child: Text('Page Two')),
-    Container(child: Text('Page Three')),
-    Container(child: Text('Page Four')),
+    HomePage(),
+    SavedPage(),
+    DownloadPage(),
+    ProfilePage(),
+  ];
+
+  List<String> _appBartitle = [
+    'Homepage',
+    'Saved',
+    'Download',
+    'My profile',
+  ];
+
+  List<Color> _appBarColor = [
+    Colors.green,
+    Colors.blue,
+    Colors.amber,
+    Colors.pink
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Page'),
+        backgroundColor: _appBarColor[_currentIndex],
+        title: Text(_appBartitle[_currentIndex]),
         centerTitle: true,
         elevation: 0,
       ),
@@ -97,18 +115,14 @@ class _MyFirstPageState extends State<MyFirstPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Floating Action Button Pressed !!!!'),
-        child: Icon(Icons.camera_alt_outlined),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: BottomNavigationBar(
         unselectedIconTheme: IconThemeData(color: Colors.grey[400]),
-        selectedIconTheme: IconThemeData(color: Colors.black),
+        selectedIconTheme: IconThemeData(color: _appBarColor[_currentIndex]),
         unselectedLabelStyle: TextStyle(color: Colors.grey[400]),
-        selectedLabelStyle: TextStyle(color: Colors.black),
+        selectedLabelStyle:
+            GoogleFonts.mateSc(color: _appBarColor[_currentIndex]),
         fixedColor: Colors.green,
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
         onTap: onTapped,
         currentIndex: _currentIndex,
         items: [
