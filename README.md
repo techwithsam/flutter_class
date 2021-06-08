@@ -16,17 +16,3 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 "# flutter_class" 
 
-
-Widget build(BuildContext context) {
-return MaterialApp(
-home: MyFirstPage();
-);
-}
-
-class MyHome extends StatelessWidget {
-
-@override
-Widget build(BuildContext context) {
-return Container();
-}
-}
