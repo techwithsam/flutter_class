@@ -1,4 +1,5 @@
 import 'package:first_example/screen/screen2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,10 +33,40 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Hello World'),
-                Text(
-                  'Samuel is going to the market!!!! New test',
-                  style: GoogleFonts.zcoolKuaiLe(color: Colors.blue),
+                GestureDetector(
+                  child: Text(
+                    'Samuel is going to the market!!!! New test',
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.zcoolKuaiLe(color: Colors.blue),
+                  ),
                 ),
+                SizedBox(height: 10),
+                // Text.rich
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Samuel is',
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.w400),
+                      ),
+                      TextSpan(
+                        text: ' going to the market',
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.w600),
+                      ),
+                      TextSpan(
+                        text: '!!!! New test',
+                        style: TextStyle(
+                            color: Colors.purple, fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                CupertinoTextField(),
+                SizedBox(height: 10),
                 Image(
                   image: AssetImage('assets/ob.jpeg'),
                 ),

@@ -66,7 +66,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
     Colors.blue,
     Colors.amber,
     Colors.pink
-  ];
+  ]; 
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +122,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
         selectedLabelStyle:
             GoogleFonts.mateSc(color: _appBarColor[_currentIndex]),
         fixedColor: Colors.green,
+        
         type: BottomNavigationBarType.fixed,
         onTap: onTapped,
         currentIndex: _currentIndex,
