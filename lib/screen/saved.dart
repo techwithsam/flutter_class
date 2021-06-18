@@ -8,11 +8,11 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
-      children: [   
+      children: [    
         SavedBox(title: 'Black Hoodie0', discrip: 'bla bla bla dfjdojdfojdfj', price: 'N5,000.00'),
         SavedBox(title: 'Black Hoodie1', discrip: 'bla bla bla dfjdojdfojdfj', price: 'N5,000.00'),
         SavedBox(title: 'Black Hoodie2', discrip: 'bla bla bla dfjdojdfojdfj', price: 'N5,000.00'),

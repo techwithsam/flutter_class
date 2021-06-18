@@ -20,18 +20,19 @@ class MyApp extends StatelessWidget {
         floatingActionButtonTheme: FloatingActionButtonThemeData(
             backgroundColor: Colors.green, elevation: 23),
         appBarTheme: AppBarTheme(
-            textTheme: GoogleFonts.dancingScriptTextTheme(
+            textTheme: GoogleFonts.poppinsTextTheme(
           TextTheme(
             headline6:
-                GoogleFonts.dancingScript(fontSize: 25, color: Colors.white),
+                GoogleFonts.poppins(fontSize: 25, color: Colors.white),
           ),
         )),
         textTheme: GoogleFonts.lobsterTextTheme(
           TextTheme(
-            bodyText2: GoogleFonts.dancingScript(color: Colors.orange),
+            bodyText2: GoogleFonts.dancingScript(color: Colors.black),
           ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
       home: MyFirstPage(),
     );
   }
