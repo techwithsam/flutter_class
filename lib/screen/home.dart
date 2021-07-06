@@ -1,7 +1,7 @@
-import 'package:first_example/screen/screen2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -11,17 +11,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var url = "tel:2349063484529";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => SecondScreen(),
-              ));
-        },
+        onPressed: () => _launcher(),
+        // onPressed: () {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (_) => SecondScreen(),
+        //       ));
+        // },
         child: Icon(Icons.camera_alt_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -33,6 +36,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Hello World'),
+                MaterialButton(onPressed: () {}, child: Text('Navigator')),
                 GestureDetector(
                   child: Text(
                     'Samuel is going to the market!!!! New test',
@@ -82,4 +86,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  void _launcher() async =>
+      await canLaunch(url) ? launch(url) : throw 'Cannot launch $url';
 }
