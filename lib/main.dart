@@ -22,13 +22,14 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
             textTheme: GoogleFonts.poppinsTextTheme(
           TextTheme(
-            headline6:
-                GoogleFonts.poppins(fontSize: 25, color: Colors.white),
+            button: GoogleFonts.poppins(color: Colors.white),
+            headline6: GoogleFonts.poppins(fontSize: 25, color: Colors.white),
           ),
         )),
-        textTheme: GoogleFonts.lobsterTextTheme(
+        textTheme: GoogleFonts.poppinsTextTheme(
           TextTheme(
-            bodyText2: GoogleFonts.dancingScript(color: Colors.black),
+            bodyText2: GoogleFonts.poppins(color: Colors.white),
+            button: GoogleFonts.poppins(color: Colors.white),
           ),
         ),
       ),
@@ -67,7 +68,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
     Colors.blue,
     Colors.amber,
     Colors.pink
-  ]; 
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +124,6 @@ class _MyFirstPageState extends State<MyFirstPage> {
         selectedLabelStyle:
             GoogleFonts.mateSc(color: _appBarColor[_currentIndex]),
         fixedColor: Colors.green,
-        
         type: BottomNavigationBarType.fixed,
         onTap: onTapped,
         currentIndex: _currentIndex,

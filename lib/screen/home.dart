@@ -1,3 +1,4 @@
+import 'package:first_example/screen/new_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,7 +37,14 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Hello World'),
-                MaterialButton(onPressed: () {}, child: Text('Navigator')),
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context, 
+                        MaterialPageRoute(builder: (context) => NewScreen()));
+                  },
+                  child: Text('Navigator'),
+                  color: Colors.green,
+                ),
                 GestureDetector(
                   child: Text(
                     'Samuel is going to the market!!!! New test',
