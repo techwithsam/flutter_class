@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewScreen extends StatefulWidget {
@@ -53,7 +54,8 @@ class _NewScreenState extends State<NewScreen> {
                       return AlertDialog(
                         title: Center(child: Text('Quick Update')),
                         content: Text(
-                            'Helo samuel isd sid sjfsudfhusdf sdhasdiad sdjsisbsfbdfiweds fsfisfhisfisfisfns fsfishsfhisfisfnsfhis fsifsi'),
+                          'Helo samuel isd sid sjfsudfhusdf sdhasdiad sdjsisbsfbdfiweds fsfisfhisfisfisfns fsfishsfhisfisfnsfhis fsifsi',
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -70,22 +72,81 @@ class _NewScreenState extends State<NewScreen> {
               color: Colors.orange,
             ),
             MaterialButton(
-              onPressed: () {},
-              child: Text('Navigator'),
+              onPressed: () {
+                showGeneralDialog(
+                    context: context,
+                    pageBuilder: (context, Animation<double> dex1,
+                        Animation<double> dex2) {
+                      return Container(
+                        height: 300,
+                        color: Colors.white,
+                      );
+                    });
+              },
+              child: Text('showGeneralDialog Button'),
               color: Colors.purple,
             ),
             MaterialButton(
-              onPressed: () {},
-              child: Text('Navigator'),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Image.asset('assets/ob.jpeg', fit: BoxFit.cover),
+                              SizedBox(height: 35),
+                              Text(
+                                'Helo samuel isd sid sjfsudfhusdf sdhasdiad sdjsisbsfbdfiweds fsfisfhisfisfisfns fsfishsfhisfisfnsfhis fsifsi',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              MaterialButton(
+                                onPressed: () {},
+                                child: Text('Navigator'),
+                                color: Colors.green,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Text('showDialog Button'),
               color: Colors.green,
             ),
             MaterialButton(
-              onPressed: () {},
-              child: Text('Navigator'),
-              color: Colors.green,
+              onPressed: () {
+                showLicensePage(
+                    context: context, applicationName: 'Testing App');
+              },
+              child: Text('showLicensePage Button'),
+              color: Colors.red,
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                showMenu(
+                  context: context,
+                  position: RelativeRect.fromRect(
+                    Rect.fromLTRB(34, 44, 23, 12),
+                    Rect.fromPoints(Offset.infinite, Offset.zero),
+                  ),
+                  items: [
+                    PopupMenuItem<int>(
+                      value: 0,
+                      child: Text('Working a lot harder'),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 1,
+                      child: Text('Working a lot less'),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 1,
+                      child: Text('Working a lot smarter'),
+                    ),
+                  ],
+                );
+              },
               child: Text('Navigator'),
               color: Colors.green,
             ),
